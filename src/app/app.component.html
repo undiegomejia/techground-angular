@@ -1,0 +1,6 @@
+<app-header></app-header>
+<button (click)="getDataFromAPI()">Get data</button>
+
+<ul *ngFor="let user of listaUsuarios">
+    <li>{{ user.name }}</li>
+</ul>
