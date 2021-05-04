@@ -1,0 +1,10 @@
+{
+    "config": [
+        { "id": "1", "name": "gain", "value": "100" },
+        { "id": "2", "name": "max-gain", "value": "200" },
+        { "id": "3", "name": "serial-output-format", "value": "nmea" },
+        { "id": "4", "name": "baud-rate", "value": "9600" },
+        { "id": "5", "name": "agc-enabled", "value": "20" },
+        { "id": "6", "name": "footprint-offset", "value": "10" }
+    ]
+}

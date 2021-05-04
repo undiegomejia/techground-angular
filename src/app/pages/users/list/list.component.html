@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Username</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-secondary" *ngFor="let item of listUsers">
+                <th scope="row">{{ item.name }}</th>
+                <td>{{ item.email }}</td>
+                <td>{{ item.username }}</td>
+                <td class="btn-group" role="group">
+                    <button type=" button " class="btn btn-outline-success m-1" (click)="editUser(item)">
+            Edit
+          </button>
+                    <button type="button " class="btn btn-outline-info m-1" (click)="seeUser(item)">
+            Details
+          </button>
+                    <button type=" button " class="btn btn-outline-danger m-1" (click)="deleteUser(item)">
+            Delete
+          </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
