@@ -6,30 +6,28 @@ import { AvatarGenerator } from 'random-avatar-generator';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss'],
 })
-export class ListComponent implements OnInit {
-
+export class UserListComponent implements OnInit {
   public generator = new AvatarGenerator();
- 
 
-  public apiUsers: [] = []
+  public apiUsers: [] = [];
   public listUsers: any = [];
-  public userInterface:User[] = []
-  public avatarUrl: string=''
+  public userInterface: User[] = [];
+  public avatarUrl: string = '';
 
   constructor(private router: Router, private ApiService: ApiService) {}
 
   getDataFromAPI() {
-    this.ApiService.getData('users').subscribe(data => {
+    this.ApiService.getData('users').subscribe((data) => {
       this.listUsers = data;
-      console.log(data)
-      this.randomAvatar()
+      console.log(data);
+      this.randomAvatar();
     });
   }
 
-  randomAvatar(){
+  randomAvatar() {
     this.avatarUrl = this.generator.generateRandomAvatar();
   }
 
@@ -46,5 +44,4 @@ export class ListComponent implements OnInit {
   deleteUser(item: any): void {
     alert('Deleted');
   }
-  
 }

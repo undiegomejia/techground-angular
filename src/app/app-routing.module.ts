@@ -3,26 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'details',
+    path: 'user-list',
     loadChildren: () =>
-      import('./pages/users/details/details.module').then(
-        (m) => m.DetailsModule
+      import('./pages/users/user-list/user-list.module').then((m) => m.ListModule),
+  },
+  {
+    path: 'post-list',
+    loadChildren: () =>
+      import('./pages/posts/post-list/post-list.module').then(
+        (m) => m.PostListModule
       ),
   },
   {
-    path: 'edit',
+    path: 'new-post',
     loadChildren: () =>
-      import('./pages/users/edit/edit.module').then((m) => m.EditModule),
-  },
-  {
-    path: 'list',
-    loadChildren: () =>
-      import('./pages/users/list/list.module').then((m) => m.ListModule),
-  },
-  {
-    path: 'new',
-    loadChildren: () =>
-      import('./pages/users/new/new.module').then((m) => m.NewModule),
+      import('./pages/posts/new-post/new-post.module').then(
+        (m) => m.NewPostModule
+      ),
   },
 ];
 

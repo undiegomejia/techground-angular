@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" *ngFor="let post of listPosts">
+            <div class="single-blog-item">
+                <div class="blog-thumnail">
+                    <a href=""><img class="blog-img" src="https://picsum.photos/420/300" alt="blog-img" /></a>
+                </div>
+                <div class="blog-content">
+                    <h4 class="blog-title">
+                        <a href="#">{{ post.title }}</a>
+                    </h4>
+                    <p class="blog-body">
+                        {{ post.body }}
+                    </p>
+                    <a href="" class="btn btn-info">View Post</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

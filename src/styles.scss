@@ -1,42 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Quicksand:wght@300;400;600&display=swap');
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Quicksand:wght@300;400;600&display=swap");
 @import "~bootswatch/dist/yeti/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/yeti/bootswatch";
 body {
     padding-top: 4.5rem;
-    background: rgb(34,138,195);
-    background: linear-gradient(97deg, rgb(15, 101, 158) 0%, rgb(17, 140, 255) 100%);
-    font-family: 'Noto Sans', sans-serif;
+    background: rgb(34, 138, 195);
+    background: linear-gradient( 97deg, rgb(15, 101, 158) 0%, rgb(17, 140, 255) 100%);
+    font-family: "Noto Sans", sans-serif;
     color: white;
     position: relative;
+    height: 100%;
 }
 
-h1, h2, h3, h4, h5, h6{
-    font-family: 'Quicksand', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Quicksand", sans-serif;
     font-weight: bold;
     letter-spacing: 1px;
 }
 
-.btn{
+.btn {
     border-radius: 20.5rem;
     padding: 0.5rem 0.9rem;
     text-transform: uppercase;
     font-size: 0.7rem;
     letter-spacing: 2px;
     transform: scale(1) translateY(0);
-    transition: transform .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
     opacity: 1;
-    &:hover{
+    &:hover {
         transform: scale(1.08) translateY(-1px);
         box-shadow: 0 0 1rem rgb(255, 255, 255);
     }
 }
 
-
-
-.form-control{
+.form-control {
     border-radius: 20.5rem;
     padding: 1rem;
     text-transform: uppercase;
@@ -44,21 +48,21 @@ h1, h2, h3, h4, h5, h6{
     letter-spacing: 2px;
 }
 
-.navbar{
-    background: rgba(0, 0, 0, 0.808)!important;
+.navbar {
+    background: rgba(0, 0, 0, 0.808) !important;
     padding: 1rem 0;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.589);
 }
 
-.overlay{
+.overlay {
     height: 100vh;
     position: fixed;
     width: 100%;
     left: 0;
     top: 0;
     bottom: 0;
-    background-image: url('../src/assets/svg/background.svg');
+    background-image: url("../src/assets/svg/background.svg");
     background-size: cover;
     z-index: 0;
-    opacity: 0.01;
+    opacity: 0.02;
 }
