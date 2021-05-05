@@ -1,30 +1,31 @@
-<div class="table-responsive">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Username</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="table-secondary" *ngFor="let item of listUsers">
-                <th scope="row">{{ item.name }}</th>
-                <td>{{ item.email }}</td>
-                <td>{{ item.username }}</td>
-                <td class="btn-group" role="group">
-                    <button type=" button " class="btn btn-outline-success m-1" (click)="editUser(item)">
-            Edit
-          </button>
-                    <button type="button " class="btn btn-outline-info m-1" (click)="seeUser(item)">
-            Details
-          </button>
-                    <button type=" button " class="btn btn-outline-danger m-1" (click)="deleteUser(item)">
-            Delete
-          </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+<div class="user__info">
+    <h2 class="user__info--mainTitle w-100 text-center">Users</h2>
+    <div class="user__info--card card" *ngFor="let item of listUsers">
+        <div class="card-body">
+            <div class="user__info--title">
+                <img class="user__info--avatar" src="{{avatarUrl}}" alt="">
+                <span>
+                    <h4 class="user__info--name card-title">{{ item.name }}</h4>
+                    <p class="user__info--username card-text"><small>Username: {{ item.username }}</small></p>
+                </span>
+               
+            </div>
+         <div class="user__info--content">
+            <hr>
+           
+           
+            <p class="card-text"><small>{{ item.address.street }}, {{ item.address.suite }}, {{ item.address.city }}</small></p>
+            <p class="card-text"><small>email: {{ item.email }}</small></p>
+            <p class="card-text">{{ item.website }}</p>
+           <div class="btn-group">
+            <a href="#" class="btn btn-primary" (click)="seeUser(item)">See posts</a>
+            <a href="#" class="btn btn-success" (click)="editUser(item)">Edit User</a>
+            <a href="#" class="btn btn-danger" (click)="deleteUser(item)">Delete User</a>
+           </div>
+         </div>
+          
+        </div>
+      </div>
 </div>
+

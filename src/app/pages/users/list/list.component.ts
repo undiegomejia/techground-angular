@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from '../../../services/api.service';
+import { User } from 'src/app/interfaces/interfaces';
+import { ApiService } from '../../../services/api.service';
+import { AvatarGenerator } from 'random-avatar-generator';
 
 @Component({
   selector: 'app-list',
@@ -8,9 +10,28 @@ import { UsersService } from '../../../services/api.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  public listUsers: any = [];
 
-  constructor(private router: Router, private UsersData: UsersService) {}
+  public generator = new AvatarGenerator();
+ 
+
+  public apiUsers: [] = []
+  public listUsers: any = [];
+  public userInterface:User[] = []
+  public avatarUrl: string=''
+
+  constructor(private router: Router, private ApiService: ApiService) {}
+
+  getDataFromAPI() {
+    this.ApiService.getData('users').subscribe(data => {
+      this.listUsers = data;
+      console.log(data)
+      this.randomAvatar()
+    });
+  }
+
+  randomAvatar(){
+    this.avatarUrl = this.generator.generateRandomAvatar();
+  }
 
   ngOnInit(): void {
     this.getDataFromAPI();
@@ -25,10 +46,5 @@ export class ListComponent implements OnInit {
   deleteUser(item: any): void {
     alert('Deleted');
   }
-  getDataFromAPI() {
-    this.UsersData.getData('users').subscribe((res) => {
-      console.log(this.listUsers);
-      this.listUsers = res;
-    });
-  }
+  
 }
