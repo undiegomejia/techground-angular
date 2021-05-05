@@ -39,3 +39,10 @@
 
 }
 
+@media (max-width: 768px) { 
+    .user__info{
+        &--card{
+            width: 100%;
+        }
+    }
+ }

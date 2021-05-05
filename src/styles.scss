@@ -25,7 +25,15 @@ h1, h2, h3, h4, h5, h6{
     text-transform: uppercase;
     font-size: 0.7rem;
     letter-spacing: 2px;
+    transform: scale(1) translateY(0);
+    transition: transform .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    opacity: 1;
+    &:hover{
+        transform: scale(1.08) translateY(-1px);
+        box-shadow: 0 0 1rem rgb(255, 255, 255);
+    }
 }
+
 
 
 .form-control{
