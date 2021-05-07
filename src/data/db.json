@@ -1,10 +1,22 @@
 {
-    "config": [
-        { "id": "1", "name": "gain", "value": "100" },
-        { "id": "2", "name": "max-gain", "value": "200" },
-        { "id": "3", "name": "serial-output-format", "value": "nmea" },
-        { "id": "4", "name": "baud-rate", "value": "9600" },
-        { "id": "5", "name": "agc-enabled", "value": "20" },
-        { "id": "6", "name": "footprint-offset", "value": "10" }
-    ]
+    "users": [{
+        "id": "1",
+        "name": "Leanne Graham",
+        "username": "Bret",
+        "email": "Sincere@april.biz",
+        "phone": "1-770-736-8031 x56442",
+        "website": "hildegard.org"
+    }],
+    "posts": [{
+        "userId": "1",
+        "id": "1",
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+    }],
+    "comments": [{
+        "postId": "1",
+        "id": "1",
+        "email": "Eliseo@gardner.biz",
+        "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+    }]
 }
