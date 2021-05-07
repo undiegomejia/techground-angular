@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { ApiService } from '../../../services/api.service';
+import { PostService } from 'src/app/pages/posts/posts.service';
+import { Post } from '../post.interface';
 
 @Component({
   selector: 'app-post-list',
@@ -8,18 +10,27 @@ import { ApiService } from '../../../services/api.service';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-  public listPosts: any = [];
 
-  constructor(private ApiService: ApiService) {}
+  public posts: Post[] = [];
 
-  getDataFromAPI() {
-    this.ApiService.getData('posts').subscribe((data) => {
-      this.listPosts = data;
-      console.log(data);
-    });
+  constructor(private router: Router, private PostService: PostService) {
+    const postObsv = this.PostService.getPosts();
+    
+    postObsv.subscribe((res)=>{
+      this.posts = res;
+    },
+    (error)=>{
+      console.log('Error:', error);
+    },
+    ()=>{
+      console.log('Done');
+    }
+    )
   }
 
+ 
+
   ngOnInit(): void {
-    this.getDataFromAPI();
+    
   }
 }

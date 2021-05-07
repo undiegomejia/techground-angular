@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/interfaces/interfaces';
-import { ApiService } from '../../../services/api.service';
 import { AvatarGenerator } from 'random-avatar-generator';
+import { UserService } from 'src/app/pages/users/users.service'
+import { User } from '../users.interface';
 
 @Component({
   selector: 'app-list',
@@ -10,33 +10,39 @@ import { AvatarGenerator } from 'random-avatar-generator';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.randomAvatar();
+  }
+
   public generator = new AvatarGenerator();
 
-  public apiUsers: [] = [];
-  public listUsers: any = [];
-  public userInterface: User[] = [];
+  public users: User[] = [];
   public avatarUrl: string = '';
 
-  constructor(private router: Router, private ApiService: ApiService) {}
-
-  getDataFromAPI() {
-    this.ApiService.getData('users').subscribe((data) => {
-      this.listUsers = data;
-      console.log(data);
-      this.randomAvatar();
-    });
+  constructor(private router: Router, private UserService: UserService) {
+    const userObsv = this.UserService.getUsers();
+    
+    userObsv.subscribe((res)=>{
+      this.users = res;
+    },
+    (error)=>{
+      console.log('Error:', error);
+    },
+    ()=>{
+      console.log('Done');
+    }
+    )
   }
 
   randomAvatar() {
     this.avatarUrl = this.generator.generateRandomAvatar();
   }
 
-  ngOnInit(): void {
-    this.getDataFromAPI();
-  }
+  
 
   editUser(item: any): void {
-    this.router.navigate(['edit']);
+   
   }
   seeUser(item: any): void {
     this.router.navigate(['details']);
