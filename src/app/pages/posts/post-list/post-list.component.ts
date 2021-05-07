@@ -10,27 +10,34 @@ import { Post } from '../post.interface';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-
   public posts: Post[] = [];
+  public message!: string;
 
-  constructor(private router: Router, private PostService: PostService) {
-    const postObsv = this.PostService.getPosts();
-    
-    postObsv.subscribe((res)=>{
-      this.posts = res;
-    },
-    (error)=>{
-      console.log('Error:', error);
-    },
-    ()=>{
-      console.log('Done');
-    }
-    )
+  constructor(private PostService: PostService) {
+    this.PostService.getPosts().subscribe(
+      (res) => {
+        this.posts = res;
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        console.log('Done');
+      }
+    );
+
+    this.PostService.deletePost().subscribe(
+      (res) => {
+        this.message = 'Post Deleted';
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        console.log('Done');
+      }
+    );
   }
 
- 
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

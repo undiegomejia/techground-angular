@@ -7,9 +7,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
-import { UserService } from 'src/app/pages/users/users.service'
+import { UserService } from 'src/app/pages/users/users.service';
 import { PostService } from 'src/app/pages/posts/posts.service';
-
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],

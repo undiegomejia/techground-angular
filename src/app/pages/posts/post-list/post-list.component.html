@@ -1,11 +1,13 @@
 <div class="container">
     <div class="row">
+        <p>Message: {{ message }}</p>
         <div class="col-md-6" *ngFor="let post of posts">
             <div class="single-blog-item">
                 <div class="blog-thumnail">
                     <a href=""><img class="blog-img" src="https://picsum.photos/420/300" alt="blog-img" /></a>
                 </div>
                 <div class="blog-content">
+                    <small> {{ post.id }}</small>
                     <h4 class="blog-title">
                         <a href="#">{{ post.title }}</a>
                     </h4>

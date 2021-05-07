@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: 'user-list',
     loadChildren: () =>
-      import('./pages/users/user-list/user-list.module').then((m) => m.ListModule),
+      import('./pages/users/user-list/user-list.module').then(
+        (m) => m.ListModule
+      ),
   },
   {
     path: 'post-list',
@@ -14,7 +16,20 @@ const routes: Routes = [
         (m) => m.PostListModule
       ),
   },
-  { path: 'post-detail', loadChildren: () => import('./pages/posts/post-detail/post-detail.module').then(m => m.PostDetailModule) },
+  {
+    path: 'post-detail',
+    loadChildren: () =>
+      import('./pages/posts/post-detail/post-detail.module').then(
+        (m) => m.PostDetailModule
+      ),
+  },
+  {
+    path: 'new-post',
+    loadChildren: () =>
+      import('./pages/posts/new-post/new-post.module').then(
+        (m) => m.NewPostModule
+      ),
+  },
 ];
 
 @NgModule({
