@@ -13,4 +13,22 @@ export class UserService {
     return this._http.get<User[]>('https://jsonplaceholder.typicode.com/users', {observe: 'body', responseType: 'json'})
   }
 
+  public getUserById(id:string): Observable<any> {
+    return this._http.get<User[]>(
+      `https://jsonplaceholder.typicode.com/users/${id}`,
+      { observe: 'body', responseType: 'json' }
+    );
+  }
+
+  public deleteUser(id:string): Observable<any> {
+    return this._http.delete<User[]>(`https://jsonplaceholder.typicode.com/users/${id}`, {observe: 'body', responseType: 'json'})
+  }
+
+  public editUser(newUser: User): Observable<any> {
+    return this._http.patch<User[]>(
+      'https://jsonplaceholder.typicode.com/users/1',
+      newUser
+    );
+  }
+
 }

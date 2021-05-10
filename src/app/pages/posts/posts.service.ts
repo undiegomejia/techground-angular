@@ -17,8 +17,22 @@ export class PostService {
     );
   }
 
-  public commentsByParams(): Observable<any> {
-    const params = new HttpParams().set('postId', '2');
+  public getPostById(id:string): Observable<any> {
+    return this._http.get<Post[]>(
+      `https://jsonplaceholder.typicode.com/posts/${id}`,
+      { observe: 'body', responseType: 'json' }
+    );
+  }
+
+  public getPostByUser(id:string): Observable<any> {
+    return this._http.get<Post[]>(
+      `https://jsonplaceholder.typicode.com/users/${id}/posts`,
+      { observe: 'body', responseType: 'json' }
+    );
+  }
+
+  public commentsByParams(id:string): Observable<any> {
+    const params = new HttpParams().set('postId', id);
     return this._http.get<Comment[]>(
       'https://jsonplaceholder.typicode.com/comments',
       { params: params }

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UserListRoutingModule } from './user-list-routing.module';
 import { UserListComponent } from './user-list.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
-  declarations: [UserListComponent],
-  imports: [CommonModule, UserListRoutingModule],
+  declarations: [UserListComponent, UsersComponent],
+  imports: [CommonModule],
 })
 export class ListModule {}

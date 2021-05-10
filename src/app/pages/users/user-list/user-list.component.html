@@ -1,39 +1,4 @@
 <div class="user__info">
     <h2 class="user__info--mainTitle w-100 text-center">Users</h2>
-    <div class="user__info--card card" *ngFor="let item of users">
-        <div class="card-body">
-            <p class="card-text">
-                <small>User ID: {{ item.id }}</small>
-            </p>
-            <hr />
-            <div class="user__info--title">
-                <img class="user__info--avatar" src="{{ avatarUrl }}" alt="" />
-                <span>
-          <h4 class="user__info--name card-title">{{ item.name }}</h4>
-          <p class="user__info--username card-text">
-            <small>Username: {{ item.username }}</small>
-          </p>
-        </span>
-            </div>
-            <div class="user__info--content">
-                <hr />
-
-                <!-- <p class="card-text" *ngFor="let info of address"><small>{{ info.street }}, {{ info.suite }}, {{ info.city }}</small></p> -->
-                <p class="card-text">
-                    <small>email: {{ item.email }}</small>
-                </p>
-                <p class="card-text">{{ item.website }}</p>
-                <div class="btn-group">
-                    <a href="#" class="btn btn-primary" (click)="seeUser(item)">See posts</a
-          >
-          <a href="#" class="btn btn-success" (click)="editUser(item)"
-            >Edit User</a
-          >
-          <a href="#" class="btn btn-danger" (click)="deleteUser(item)"
-            >Delete User</a
-          >
-        </div>
-      </div>
-    </div>
-  </div>
+    <app-users *ngFor="let user of users" [data]="user" (delete)="borrarUser($event)"></app-users>
 </div>

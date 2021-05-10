@@ -1,0 +1,31 @@
+<div class="user__list">
+    <div class="user__list--card card">
+        <div class="card-body">
+            <p class="card-text">
+                <small>User ID: {{ user?.id }}</small>
+            </p>
+            <hr />
+            <div class="user__list--title">
+                <img class="user__info--avatar" src="{{ avatarUrl }}" alt="" />
+                <span>
+          <h4 class="user__list--name card-title">{{ user?.name }}</h4>
+          <p class="user__list--username card-text">
+            <small>Username: {{ user?.username }}</small>
+          </p>
+          <p class="card-text">
+            <small>email: {{ user?.email }}</small>
+        </p>
+        <p class="card-text">{{ user?.website }}</p>
+        </span>
+            </div>
+            <div class="btn-group col-md-12">
+                <button *ngIf="!editar; else buttonSave" class="btn btn-info" (click)="editable()">Edit User</button>
+                <ng-template #buttonSave>
+                    <button (click)="saveUser()" class="btn btn-success">Save User</button>
+                </ng-template>
+                <button class="btn btn-danger" (click)="borrarUsuario(user.id)">Delete User</button>
+            </div>
+           
+    </div>
+  </div>
+</div>

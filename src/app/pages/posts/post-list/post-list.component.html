@@ -2,19 +2,22 @@
     <div class="row">
         <div class="col-md-6" *ngFor="let post of posts">
             <div class="single-blog-item">
+                <div class="blog-top-title">
+                    <small>Post ID: {{ post.id }}</small><br>
+                    <small>User ID: {{ post.userId }}</small>
+                </div>
+                <hr />
                 <div class="blog-thumnail">
-                    <small>Post ID: {{ post.id }}</small>
-                    <hr />
-                    <a href=""><img class="blog-img" src="https://picsum.photos/420/300" alt="blog-img" /></a>
+                    <img class="blog-img" src="https://picsum.photos/420/300" alt="blog-img" />
                 </div>
                 <div class="blog-content">
                     <h4 class="blog-title">
-                        <a href="#">{{ post.title }}</a>
+                        <a routerLink="../post-detail/{{ post.id }}">{{ post.title }}</a>
                     </h4>
                     <p class="blog-body">
                         {{ post.body }}
                     </p>
-                    <a href="" class="btn btn-info">View Post</a>
+                    <a  routerLink="../post-detail/{{ post.id }}" class="btn btn-info">View Post</a>
                 </div>
             </div>
         </div>

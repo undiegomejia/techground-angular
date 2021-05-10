@@ -1,0 +1,50 @@
+.user__posts{
+    margin: 0 auto;
+    color: black;
+    &--mainTitle{
+       color: #fdfdfd;
+    }
+    &--card{
+        margin: 2%;
+        background: rgba(255, 255, 255, 0.726);
+        border-radius: 3px;
+        box-shadow: 0 0 2rem rgba(0, 0, 0, 0.159);
+    }
+    &--title {
+        margin-bottom: 1rem;
+        display: flex;
+        img {
+            width: 120px;
+            margin-right: 2rem;
+        }
+        span{
+            padding-top: 1rem;
+        }
+    }
+    &--name{
+        margin-bottom: 0;
+    }
+
+}
+
+.single-blog-user{
+    margin: 2%;
+    background: rgba(255, 255, 255, 0.726);
+    border-radius: 3px;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.159);
+    padding: 2rem;
+    color: black;
+    &--thumbnail img {
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+    }
+    &--content {
+        margin-top: 2rem;
+    }
+    &--title{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;  
+    }
+}

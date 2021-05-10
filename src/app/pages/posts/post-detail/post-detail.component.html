@@ -1,28 +1,46 @@
-<div class="container">
-    <div class="row">
-        <h2>Comments</h2>
-        <ul *ngFor="let comment of comments">
-            <li>PostId: {{ comment.postId }}</li>
-            <li>Id: {{ comment.id }}</li>
-            <li>Name: {{ comment.name }}</li>
-            <li>Email: {{ comment.email }}</li>
-            <li>Comment: {{ comment.body }}</li>
-        </ul>
-        <hr />
-        <h2>Put Post</h2>
-        <ul>
-            <li>UserId: {{ putPost?.userId }}</li>
-            <li>Id: {{ putPost?.id }}</li>
-            <li>Title: {{ putPost?.title }}</li>
-            <li>Body: {{ putPost?.body }}</li>
-        </ul>
-        <hr />
-        <h2>Patch Post</h2>
-        <ul>
-            <li>UserId: {{ patchPost?.userId }}</li>
-            <li>Id: {{ patchPost?.id }}</li>
-            <li>Title: {{ patchPost?.title }}</li>
-            <li>Body: {{ patchPost?.body }}</li>
-        </ul>
+
+    <div class="post col-md-12" >
+        <img class="post__banner" src="https://picsum.photos/920/300" alt="">
+    <div class="post__body">
+        <small>Post ID: {{postById?.id}}</small>
+        <hr>
+        <h1 class="post__body--title">{{postById?.title}}</h1>
+        <p class="post__body--text">{{postById?.body}}</p>
+        <div class="post__user text-right">
+          <img class="post__user--avatar" src="{{ avatarUrl }}" alt="" />
+          <small>By: {{user?.name}} | UserID: {{user?.id}}</small>
+        </div>
+        <hr>
+        <h4 class="post__body--title">Comments:</h4>
+        
+        <div class="post__body--comments">
+            <ul *ngFor="let comment of comments">
+                <li>PostId: {{ comment.postId }}</li>
+                <li>Id: {{ comment.id }}</li>
+                <li>Name: {{ comment.name }}</li>
+                <li>Email: {{ comment.email }}</li>
+                <li>Comment: {{ comment.body }}</li>
+              </ul>
+        </div>
     </div>
+    
+      
+
+  <code style="display: none;">
+    <h2>Put Post</h2>
+    <ul>
+      <li>UserId: {{ putPost?.userId }}</li>
+      <li>Id: {{ putPost?.id }}</li>
+      <li>Title: {{ putPost?.title }}</li>
+      <li>Body: {{ putPost?.body }}</li>
+    </ul>
+    <hr />
+    <h2>Patch Post</h2>
+    <ul>
+      <li>UserId: {{ patchPost?.userId }}</li>
+      <li>Id: {{ patchPost?.id }}</li>
+      <li>Title: {{ patchPost?.title }}</li>
+      <li>Body: {{ patchPost?.body }}</li>
+    </ul>
+  </code>
 </div>

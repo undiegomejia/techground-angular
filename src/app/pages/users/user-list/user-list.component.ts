@@ -10,18 +10,15 @@ import { User } from '../users.interface';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-  public generator = new AvatarGenerator();
 
   public users: User[] = [];
-  public avatarUrl: string = '';
+  public editActive = false
 
   ngOnInit(): void {
-    this.randomAvatar();
-    const userObservable = this.UserService.getUsers();
-
-    userObservable.subscribe(
+    this.UserService.getUsers().subscribe(
       (res) => {
         this.users = res;
+        console.log('Error:', res);
       },
       (error) => {
         console.log('Error:', error);
@@ -32,17 +29,14 @@ export class UserListComponent implements OnInit {
     );
   }
 
+  borrarUser(id:number){
+    this.users = this.users.filter(user => user.id !=id)
+    console.log(this.users);
+  }
+
   constructor(private router: Router, private UserService: UserService) {}
 
-  randomAvatar() {
-    this.avatarUrl = this.generator.generateRandomAvatar();
-  }
+  
 
-  editUser(item: any): void {}
-  seeUser(item: any): void {
-    this.router.navigate(['details']);
-  }
-  deleteUser(item: any): void {
-    alert('Deleted');
-  }
+  
 }

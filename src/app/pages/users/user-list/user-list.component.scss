@@ -3,46 +3,5 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    color: black;
-    &--mainTitle{
-       color: #fdfdfd;
-    }
-    &--card{
-        width: 45.333%;
-        min-width: 200px;
-        margin: 2%;
-        background: rgba(255, 255, 255, 0.726);
-        border-radius: 3px;
-        box-shadow: 0 0 2rem rgba(0, 0, 0, 0.159);
-    }
-    &--title {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1rem;
-        
-        img {
-            width: 30%;
-        }
-        span{
-            padding-top: 1rem;
-        }
-    }
-    &--content{
-        text-align: center;
-    }
-    &--username{
-        text-align: center;
-    }
-    &--name{
-        margin-bottom: 0;
-    }
-
 }
 
-@media (max-width: 768px) { 
-    .user__info{
-        &--card{
-            width: 100%;
-        }
-    }
- }
