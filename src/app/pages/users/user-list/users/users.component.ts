@@ -18,7 +18,7 @@ export class UsersComponent {
 
   @Output() delete = new EventEmitter<number>()
 
-  @Output() edit = new EventEmitter<number>()
+  @Output() edit = new EventEmitter<User>()
 
   constructor() { 
     this.avatarUrl = this.generator.generateRandomAvatar();
@@ -29,7 +29,7 @@ export class UsersComponent {
     this.delete.emit(id)
   }
 
-  editarUsuario(){
+  editarUsuario(user:User){
     this.edit.emit()
   }
 
