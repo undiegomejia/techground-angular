@@ -1,37 +1,19 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mx-auto my-0">
-            <h1>Create post</h1>
-
-            <form [formGroup]="newPostForm" (ngSubmit)="addNewPost()" class="new__form">
-                <div class="form-group has-error">
-                    <label for="slug">Title <span class="require">*</span></label>
-                    <input type="text" class="form-control" name="title" fromControlName="title" required />
-                </div>
-
-                <div class="form-group">
-                    <label for="title">User <span class="require">*</span></label>
-                    <input type="text" class="form-control" name="userId" fromControlName="userId" required />
-                </div>
-
-                <div class="form-group">
-                    <label for="description">Body</label>
-                    <textarea rows="5" class="form-control" name="body" fromControlName="body" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <p><span class="require">*</span> - required fields</p>
-                </div>
-
-                <div *ngIf="msgTrue" class="alert alert-dismissible alert-success">
-                    <strong>Well done!</strong> You successfully create a new post!.
-                </div>
-
-                <div class="btn-group">
-                    <button type="submit" class="btn btn-success">Create post</button>
-                    <button class="btn btn-danger">Cancel</button>
-                </div>
-            </form>
-        </div>
+<div class="single-blog-item">
+    <div class="blog-top-title">
+        <small>Post ID: {{ post?.id }}</small><br>
+        <small>User ID: {{ post?.userId }}</small>
+    </div>
+    <hr />
+    <div class="blog-thumnail">
+        <img class="blog-img" src="https://picsum.photos/420/300" alt="blog-img" />
+    </div>
+    <div class="blog-content">
+        <h4 class="blog-title">
+            <a routerLink="../post-detail/{{ post.id }}">{{ post?.title }}</a>
+        </h4>
+        <p class="blog-body">
+            {{ post?.body }}
+        </p>
+        <a  routerLink="../post-detail/{{ post.id }}" class="btn btn-info">View Post</a>
     </div>
 </div>

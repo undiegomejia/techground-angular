@@ -37,7 +37,6 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.postID =this.route.snapshot.params.id;
-    this.userID =this.route.snapshot.params.id;
     this.route.paramMap.subscribe(params => {
       this.postIDSubscription = params.get("id")
     });
@@ -53,7 +52,7 @@ export class PostDetailComponent implements OnInit {
         this.comments = res;
       },
       (error) => {
-        console.log('Error:', error);
+        console.error('Error:', error);
       },
       () => {
         console.log('Done');
@@ -66,59 +65,14 @@ export class PostDetailComponent implements OnInit {
         console.log('Res:', res);
       },
       (error) => {
-        console.log('Error:', error);
+        console.error('Error:', error);
       },
       () => {
         console.log('Done');
       }
     );
 
-    // let editedPost: Post = {
-    //   body: 'edited-body',
-    //   title: 'edited-test',
-    //   userId: 1,
-    // };
-
-    // let patchedPost: Post = {
-    //   title: 'Nuevo título',
-    // };
-
-    // this.PostService.putPost(editedPost).subscribe(
-    //   (res) => {
-    //     this.putPost = res;
-    //   },
-    //   (error) => {
-    //     console.log('Error:', error);
-    //   },
-    //   () => {
-    //     console.log('Done');
-    //   }
-    // );
-
-    // this.PostService.patchPost(patchedPost).subscribe(
-    //   (res) => {
-    //     this.patchPost = res;
-    //   },
-    //   (error) => {
-    //     console.log('Error:', error);
-    //   },
-    //   () => {
-    //     console.log('Done');
-    //   }
-    // );
-
-    this.UserService.getUserById(this.userID).subscribe(
-      (res) => {
-        this.user = res;
-        console.log('User:', res);
-      },
-      (error) => {
-        console.log('Error:', error);
-      },
-      () => {
-        console.log('Done');
-      }
-    );
-    this.avatarUrl = this.generator.generateRandomAvatar();
+    
+    this.avatarUrl = this.generator.generateRandomAvatar('avatar');
   }
 }

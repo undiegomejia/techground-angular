@@ -12,13 +12,12 @@ import { User } from '../users.interface';
 export class UserListComponent implements OnInit {
 
   public users: User[] = [];
-  public editActive = false
 
   ngOnInit(): void {
     this.UserService.getUsers().subscribe(
       (res) => {
         this.users = res;
-        console.log('Error:', res);
+        console.log('Res:', res);
       },
       (error) => {
         console.log('Error:', error);
@@ -34,9 +33,10 @@ export class UserListComponent implements OnInit {
     console.log(this.users);
   }
 
+  editarUsuario(user:User){
+    this.users.splice(user.id-1, 1, user)
+    console.log(this.users);
+  }
+
   constructor(private router: Router, private UserService: UserService) {}
-
-  
-
-  
 }

@@ -1,12 +1,12 @@
 .user__posts{
     margin: 0 auto;
-    color: black;
+    color: white;
     &--mainTitle{
        color: #fdfdfd;
     }
     &--card{
         margin: 2%;
-        background: rgba(255, 255, 255, 0.726);
+        background: rgba(17, 0, 0, 0.726);;
         border-radius: 3px;
         box-shadow: 0 0 2rem rgba(0, 0, 0, 0.159);
     }
@@ -29,11 +29,11 @@
 
 .single-blog-user{
     margin: 2%;
-    background: rgba(255, 255, 255, 0.726);
+    background: rgba(17, 0, 0, 0.726);;
     border-radius: 3px;
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.159);
     padding: 2rem;
-    color: black;
+    color: white;
     &--thumbnail img {
         margin: 0 auto;
         display: block;

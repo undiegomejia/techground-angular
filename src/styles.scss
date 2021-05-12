@@ -25,6 +25,15 @@ h6 {
     letter-spacing: 1px;
 }
 
+a{
+    color: #46b8da;
+}
+
+a:hover{
+    color: #01c4ff;
+    text-decoration: none;
+}
+
 .btn {
     border-radius: 20.5rem;
     padding: 0.5rem 0.9rem;
@@ -33,12 +42,27 @@ h6 {
     letter-spacing: 2px;
     transform: scale(1) translateY(0);
     transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
-    opacity: 0.8;
+    border: none;
     &:hover {
         transform: scale(1.08) translateY(-1px);
-        opacity: 1;
     }
 }
+
+.btn-success.disabled, .btn-success:disabled {
+    color: #fff;
+    background-color: grey;
+    border-color: grey;
+}
+
+button[disabled]{
+    background-color: grey;
+    transform: scale(1) translateY(0);
+    }
+    
+    button[disabled]:hover{
+        background-color: grey;
+        transform: scale(1) translateY(0);
+        }
 
 .form-control {
     border-radius: 20.5rem;
@@ -49,9 +73,9 @@ h6 {
 }
 
 .navbar {
-    background: rgba(0, 0, 0, 0.808) !important;
+    background: rgba(17, 0, 0, 0.886) !important;
     padding: 1rem 0;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.589);
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.689);
 }
 
 .overlay {
@@ -65,4 +89,10 @@ h6 {
     background-size: cover;
     z-index: 0;
     opacity: 0.02;
+}
+
+input, select{
+    border-radius: 20.5rem;
+    padding: 5px;
+    outline: none;
 }

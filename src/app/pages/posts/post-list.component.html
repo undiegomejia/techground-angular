@@ -1,0 +1,55 @@
+<div class="post__form" [ngClass]="{'active' :  formActive}">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()" action="">
+        <h2>Create Post</h2>
+        <button (click)="showForm()" type="button" class="close post__form--times" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        <div class="post__form--section form-group">
+            <label class="form-label" for="">UserID:</label>
+            <select formControlName="userId" name="userId" id="userId">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+        </div>
+        <div class="post__form--section form-group">
+            <label class="form-label" for="id">Post ID:</label>
+            <input formControlName="id" class="form-control" type="number">
+        </div>
+        <div class="post__form--section form-group">
+            <label class="form-label" for="title">Post title:</label>
+            <input formControlName="title" class="form-control" type="text">
+        </div>
+        <div class="post__form--section form-group">
+            <label class="form-label" for="content">Post content:</label>
+            <textarea formControlName="body" class="form-control" name="content" id="" cols="30" rows="10"></textarea>
+        </div>
+        <button class="btn btn-success" type="submit">Create Post</button>
+    </form>
+    
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button *ngIf="!formActive; else buttonClose" (click)="showForm()" class="nav-link btn btn-danger btn-sm text-white my-0 mx-auto">Create Post</button
+            >
+        <ng-template #buttonClose>
+            <button  (click)="showForm()" class="nav-link btn btn-info btn-sm text-white my-0 mx-auto">Close Form</button
+                >
+        </ng-template>
+        </div>
+        <div class="post-list col-md-12">
+            <app-new-post class="post-single" *ngFor="let post of posts" [data]="post"></app-new-post>
+        </div>
+    </div>
+</div>
+
+

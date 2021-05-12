@@ -13,10 +13,10 @@ import { UserService } from 'src/app/pages/users/users.service';
 import { PostService } from 'src/app/pages/posts/posts.service';
 import { UserListComponent } from './pages/users/user-list/user-list.component';
 import { PostDetailComponent } from './pages/posts/post-detail/post-detail.component';
-import { PostListComponent } from './pages/posts/post-list/post-list.component';
 import { NewPostComponent } from './pages/posts/new-post/new-post.component';
 import { PostByUserComponent } from './pages/posts/post-by-user/post-by-user.component';
 import { UsersComponent } from './pages/users/user-list/users/users.component';
+import { PostListComponent } from './pages/posts/post-list.component';
 
 @NgModule({
   declarations: [

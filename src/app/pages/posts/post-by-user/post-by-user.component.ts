@@ -67,7 +67,7 @@ export class PostByUserComponent implements OnInit {
       }
     );
 
-    this.avatarUrl = this.generator.generateRandomAvatar();
+    this.avatarUrl = this.generator.generateRandomAvatar('avatar');
     
   }
 

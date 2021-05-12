@@ -1,5 +1,23 @@
-.new__form {
-    & textarea {
-        border-radius: 10px;
+.single-blog-item {
+    margin: 2%;
+    background: rgba(17, 0, 0, 0.726);
+    border-radius: 3px;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.159);
+    padding: 2rem;
+    color: white;
+    & img.blog-img {
+        margin: 0 auto;
+        display: block;
+        width: 100%;
     }
+    & .blog-title {
+        margin-top: 2rem;
+        text-transform: uppercase;  
+    }
+}
+
+.blog-top-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }

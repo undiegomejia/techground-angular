@@ -12,6 +12,7 @@
     }
     &--title {
         margin-bottom: 1rem;
+        text-align: center;
         img {
             margin: 0 auto 1rem;
             max-width: 180px;
@@ -22,7 +23,24 @@
         }
     }
     &--name{
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
+    & input{
+        outline: none;
+        border-radius: 3px;
+        border: none;
+    }
+}
 
+
+.stopedit, .stopedit:hover {
+    text-align: center;
+    display: block;
+    margin: 10px 0 0;
+    color: #f04124;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
 }

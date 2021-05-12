@@ -1,4 +1,4 @@
 <div class="user__info">
     <h2 class="user__info--mainTitle w-100 text-center">Users</h2>
-    <app-users *ngFor="let user of users" [data]="user" (delete)="borrarUser($event)"></app-users>
+    <app-users *ngFor="let user of users" [data]="user" (delete)="borrarUser($event)" (edit)="editarUsuario($event)"></app-users>
 </div>
