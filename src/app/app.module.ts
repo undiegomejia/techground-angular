@@ -17,6 +17,8 @@ import { NewPostComponent } from './pages/posts/new-post/new-post.component';
 import { PostByUserComponent } from './pages/posts/post-by-user/post-by-user.component';
 import { UsersComponent } from './pages/users/user-list/users/users.component';
 import { PostListComponent } from './pages/posts/post-list.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { HomePostComponent } from './homepage/home-post/home-post.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { PostListComponent } from './pages/posts/post-list.component';
     PostListComponent, 
     NewPostComponent, 
     PostByUserComponent,
-    UsersComponent],
+    UsersComponent,
+    HomepageComponent,
+    HomePostComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

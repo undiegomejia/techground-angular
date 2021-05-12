@@ -1,0 +1,15 @@
+<div class="card border-dark" style="width: 18rem">
+    <img class="card-img-top" src="https://picsum.photos/420/300" alt="Card image cap" />
+
+    <div class="card-header">
+        <small>Post ID: {{ post?.id }}</small>
+        <a href="#" routerLink="../post-detail/{{ post.id }}">
+            <h5>{{ post?.title }}</h5>
+        </a>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{ post?.body }}</p>
+        <a routerLink="../post-detail/{{ post.id }}" class="btn btn-primary">View Post</a
+    >
+  </div>
+</div>

@@ -1,0 +1,16 @@
+.home-posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.home-posts-container h2 {
+    display: block;
+    width: 100%;
+}
+
+.carousel-caption {
+    top: 33.33%;
+    color: white;
+    text-shadow: 0 0 2rem #000;
+}

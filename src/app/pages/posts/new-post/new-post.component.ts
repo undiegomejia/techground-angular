@@ -9,18 +9,9 @@ import { Post } from '../post.interface';
   styleUrls: ['./new-post.component.scss'],
 })
 export class NewPostComponent implements OnInit {
-
-  @Input('data')post:Post
-
-  
+  @Input('data') post: Post;
 
   constructor() {}
 
-  msgTrue = false;
-
-  
-
-  ngOnInit(): void {
-   
-  }
+  ngOnInit(): void {}
 }
