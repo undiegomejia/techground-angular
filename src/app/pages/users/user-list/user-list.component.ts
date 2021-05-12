@@ -10,7 +10,6 @@ import { User } from '../users.interface';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-
   public users: User[] = [];
 
   ngOnInit(): void {
@@ -28,13 +27,13 @@ export class UserListComponent implements OnInit {
     );
   }
 
-  borrarUser(id:number){
-    this.users = this.users.filter(user => user.id !=id)
+  borrarUser(id: number) {
+    this.users = this.users.filter((user) => user.id != id);
     console.log(this.users);
   }
 
-  editarUsuario(user:User){
-    this.users.splice(user.id-1, 1, user)
+  editarUsuario(user: User) {
+    this.users.splice(user.id - 1, 1, user);
     console.log(this.users);
   }
 

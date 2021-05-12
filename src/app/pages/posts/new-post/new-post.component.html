@@ -1,7 +1,8 @@
 <div class="single-blog-item">
     <div class="blog-top-title">
-        <small>Post ID: {{ post?.id }}</small><br>
-        <small>User ID: {{ post?.userId }}</small>
+        <small>Post ID: {{ post?.id }}</small
+    ><br />
+    <small>User ID: {{ post?.userId }}</small>
     </div>
     <hr />
     <div class="blog-thumnail">
@@ -14,6 +15,13 @@
         <p class="blog-body">
             {{ post?.body }}
         </p>
-        <a  routerLink="../post-detail/{{ post.id }}" class="btn btn-info">View Post</a>
+        <div class="btn-group">
+            <button routerLink="../post-detail/{{ post.id }}" class="btn btn-info">
+        View Post
+      </button>
+            <button (click)="deletePost(post.id)" class="btn btn-danger">
+        Delete Post
+      </button>
+        </div>
     </div>
 </div>
