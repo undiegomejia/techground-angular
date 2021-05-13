@@ -7,9 +7,12 @@ import { Post } from 'src/app/pages/posts/post.interface';
   styleUrls: ['./home-post.component.scss'],
 })
 export class HomePostComponent implements OnInit {
+  
   @Input('data') post: Post;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  
 }

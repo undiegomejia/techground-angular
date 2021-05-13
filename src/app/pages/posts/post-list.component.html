@@ -1,3 +1,18 @@
+
+        <div class="col-md-12 text-center mt-4">
+            <button *ngIf="!formActive; else buttonClose" (click)="showForm()" class="nav-link btn btn-warning btn-sm text-white my-0 mx-auto">
+        Create Post
+      </button>
+            <ng-template #buttonClose>
+                <button (click)="showForm()" class="nav-link btn btn-info btn-sm text-white my-0 mx-auto">
+          Close Form
+        </button>
+            </ng-template>
+        </div>
+        <div class="post-list col-md-12">
+            <app-new-post class="post-single" *ngFor="let post of posts" [data]="post" (edit)="editPost($event)" (delete)="borrarPost($event)"></app-new-post>
+        </div>
+
 <div class="post__form" [ngClass]="{ active: formActive }">
     <form [formGroup]="postForm" (ngSubmit)="onSubmit()" action="">
         <h2>Create Post</h2>
@@ -35,20 +50,3 @@
     </form>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <button *ngIf="!formActive; else buttonClose" (click)="showForm()" class="nav-link btn btn-warning btn-sm text-white my-0 mx-auto">
-        Create Post
-      </button>
-            <ng-template #buttonClose>
-                <button (click)="showForm()" class="nav-link btn btn-info btn-sm text-white my-0 mx-auto">
-          Close Form
-        </button>
-            </ng-template>
-        </div>
-        <div class="post-list col-md-12">
-            <app-new-post class="post-single" *ngFor="let post of posts" [data]="post" (delete)="borrarPost($event)"></app-new-post>
-        </div>
-    </div>
-</div>

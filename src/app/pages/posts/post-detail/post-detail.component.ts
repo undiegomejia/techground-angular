@@ -15,20 +15,13 @@ import { User } from '../../users/users.interface';
 export class PostDetailComponent implements OnInit {
 
   public generator = new AvatarGenerator();
-
   public comments: Comments[] = [];
   public postById:Post;
-  public putPost!: Post;
-  public patchPost!: Post;
   public user: User;
-
-  userID:string;
-  userIDSubscription:string;
-  avatarUrl: string = '';
-
-  postID:string;
-  postIDSubscription:string;
-  currentURL: string;
+  public avatarUrl: string = '';
+  public postID:string;
+  public postIDSubscription:string;
+  public currentURL: string;
 
   constructor(private PostService: PostService, private UserService: UserService, private router: Router,
     private route: ActivatedRoute) {
@@ -72,7 +65,18 @@ export class PostDetailComponent implements OnInit {
       }
     );
 
-    
+    this.UserService.getUserById(this.postID).subscribe(
+      (res) => {
+        this.user = res;
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        console.log('Done');
+      }
+    );
+
     this.avatarUrl = this.generator.generateRandomAvatar('avatar');
   }
 }

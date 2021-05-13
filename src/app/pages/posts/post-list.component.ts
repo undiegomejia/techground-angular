@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { PostService } from 'src/app/pages/posts/posts.service';
 import { UserService } from 'src/app/pages/users/users.service';
-
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { User } from '../users/users.interface';
 import { Post } from './post.interface';
 
@@ -14,24 +11,24 @@ import { Post } from './post.interface';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-  userId: number;
-  id: number;
-  title: string;
-  body: string;
 
-  postForm: FormGroup;
-
+  public userId: number;
+  public id: number;
+  public title: string;
+  public body: string;
+  public postForm: FormGroup;
   public formActive = false;
-
-  posts: Post[] = [];
-  message!: string;
-  users: User[] = [];
+  public posts: Post[] = [];
+  public message!: string;
+  public users: User[] = [];
 
   constructor(
     private PostService: PostService,
     private UserService: UserService,
     public formBuilder: FormBuilder
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.UserService.getUsers().subscribe(
       (res) => {
         this.users = res;
@@ -56,9 +53,7 @@ export class PostListComponent implements OnInit {
         return;
       }
     );
-  }
 
-  ngOnInit(): void {
     this.postForm = this.formBuilder.group({
       userId: ['', [Validators.required, Validators.minLength(3)]],
       id: ['', [Validators.required, Validators.minLength(3)]],
@@ -69,7 +64,6 @@ export class PostListComponent implements OnInit {
 
   showForm() {
     this.formActive = !this.formActive;
-    console.log(this.formActive);
   }
 
   onSubmit() {
@@ -79,5 +73,9 @@ export class PostListComponent implements OnInit {
 
   borrarPost(id: number) {
     this.posts = this.posts.filter((post) => post.id != id);
+  }
+
+  editPost(post:Post){
+    this.posts.splice(post.id - 1, 1, post);
   }
 }

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from '../../users.interface';
-
 import { AvatarGenerator } from 'random-avatar-generator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -11,30 +10,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class UsersComponent implements OnInit {
 
-  name:string
-  id:string
-  username:string
-  website:string
-  email:string
-
-
-  userForm: FormGroup
-
+  public name:string
+  public id:string
+  public username:string
+  public website:string
+  public email:string
+  public userForm: FormGroup
   public generator = new AvatarGenerator();
-
-  avatarUrl: string = '';
+  public avatarUrl: string = '';
   public editar = false
-  usuario:User
-  nuevoUsuario:User
+  public usuario:User
+  public nuevoUsuario:User
 
   ngOnInit(): void {
-    this.userForm = this.formBuilder.group({
-      id: ['', [Validators.required, Validators.minLength(3)]],
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      website: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.minLength(3)]]
-    })  
+    this.createForm() 
   }
 
   get getControl(){
@@ -66,7 +55,6 @@ export class UsersComponent implements OnInit {
       this.delete.emit(id)   
   }
 
-
   editable(){
   this.editar = true
   }
@@ -74,5 +62,15 @@ export class UsersComponent implements OnInit {
   stopEdit(){
     this.editar = false
     }
+
+  createForm(){
+      this.userForm = this.formBuilder.group({
+       id: ['', [Validators.required, Validators.minLength(3)]],
+       name: ['', [Validators.required, Validators.minLength(3)]],
+       username: ['', [Validators.required, Validators.minLength(3)]],
+       website: ['', [Validators.required, Validators.minLength(3)]],
+       email: ['', [Validators.required, Validators.minLength(3)]]
+    }) 
+  }
 
 }

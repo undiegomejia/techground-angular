@@ -21,3 +21,25 @@
     display: flex;
     justify-content: space-between;
 }
+
+textarea{
+        border-radius: 3px;
+    }
+input{
+    width: 100%;
+    outline: none;
+    border-radius: 3px;
+    border: none;
+}
+
+.stopedit, .stopedit:hover {
+    text-align: center;
+    display: block;
+    margin: 10px 0 0;
+    color: #f04124;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}

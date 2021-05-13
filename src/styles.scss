@@ -7,7 +7,7 @@
 body {
     padding-top: 4.5rem;
     background: rgb(34, 138, 195);
-    background: linear-gradient( 97deg, rgb(15, 101, 158) 0%, rgb(17, 140, 255) 100%);
+    background: linear-gradient( 160deg, rgb(15, 101, 158) 0%, rgb(0, 73, 141) 100%);
     font-family: "Noto Sans", sans-serif;
     color: white;
     position: relative;
@@ -27,8 +27,11 @@ h6 {
 
 a{
     color: #46b8da;
+    word-break: break-word;
 }
-
+p, span{
+    word-break: break-word;
+}
 a:hover{
     color: #01c4ff;
     text-decoration: none;

@@ -38,9 +38,10 @@
                 <h4 class="blog-title">
                     <a routerLink="../../post-detail/{{ post.id }}">{{ post?.title }}</a>
                 </h4>
-                <p class="single-blog-user--body">
-                    {{ post?.body }}
-                </p>
+                <div class="single-blog-user--body">
+                    <p> {{ post?.body }}</p>
+                   <small class="float-right">By {{user?.name}}</small>
+                </div>
                
             </div>
         </div>

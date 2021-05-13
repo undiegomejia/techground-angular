@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/pages/users/users.service';
 import { User } from 'src/app/pages/users/users.interface';
 import { AvatarGenerator } from 'random-avatar-generator';
-
 import { PostService } from 'src/app/pages/posts/posts.service';
 import { Post } from '../post.interface';
-
 import { ActivatedRoute, Router } from '@angular/router';
 
 
@@ -15,21 +13,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./post-by-user.component.scss']
 })
 export class PostByUserComponent implements OnInit {
-  public generator = new AvatarGenerator();
 
+  public generator = new AvatarGenerator();
   public user:User
   public posts:Post[]
-
-  userID:string;
-  userIDSubscription:string;
-  currentURL: string;
-  avatarUrl: string = '';
+  public userID:string;
+  public userIDSubscription:string;
+  public currentURL: string;
+  public avatarUrl: string = '';
 
   constructor(private PostService: PostService, private UserService: UserService, private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
     this.userID =this.route.snapshot.params.id;
     this.route.paramMap.subscribe(params => {
       this.userIDSubscription = params.get("id")
