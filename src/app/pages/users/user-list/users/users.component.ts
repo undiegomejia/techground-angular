@@ -6,71 +6,67 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-
-  public name:string
-  public id:string
-  public username:string
-  public website:string
-  public email:string
-  public userForm: FormGroup
+  public name: string;
+  public id: string;
+  public username: string;
+  public website: string;
+  public email: string;
+  public userForm: FormGroup;
   public generator = new AvatarGenerator();
   public avatarUrl: string = '';
-  public editar = false
-  public usuario:User
-  public nuevoUsuario:User
+  public editar = false;
+  public usuario: User;
+  public newUser: User;
 
   ngOnInit(): void {
-    this.createForm() 
+    this.createForm();
   }
 
-  get getControl(){
+  get getControl() {
     return this.userForm.controls;
   }
 
-  onSubmit(user:User){
-    this.nuevoUsuario = this.userForm.value
-    this.nuevoUsuario.id = this.user.id
-    this.user = this.nuevoUsuario
-    this.editar = false
-    this.edit.emit(this.nuevoUsuario)
-    console.log(this.nuevoUsuario)
+  onSubmit(user: User) {
+    this.newUser = this.userForm.value;
+    this.newUser.id = this.user.id;
+    this.user = this.newUser;
+    this.editar = false;
+    this.edit.emit(this.newUser);
+    console.log(this.newUser);
   }
 
-  @Input('data')user:User
+  @Input('data') user: User;
 
-  @Output() delete = new EventEmitter<number>()
+  @Output() delete = new EventEmitter<number>();
 
-  @Output() edit = new EventEmitter<User>()
+  @Output() edit = new EventEmitter<User>();
 
-  constructor(public formBuilder: FormBuilder) { 
+  constructor(public formBuilder: FormBuilder) {
     this.avatarUrl = this.generator.generateRandomAvatar('avatar');
-    
   }
 
-  borrarUsuario(id:number){
-      alert('Este usuario está frito. Decile adiós.')
-      this.delete.emit(id)   
+  deleteUser(id: number) {
+    this.delete.emit(id);
   }
 
-  editable(){
-  this.editar = true
+  editable() {
+    this.editar = true;
   }
 
-  stopEdit(){
-    this.editar = false
-    }
-
-  createForm(){
-      this.userForm = this.formBuilder.group({
-       id: ['', [Validators.required, Validators.minLength(3)]],
-       name: ['', [Validators.required, Validators.minLength(3)]],
-       username: ['', [Validators.required, Validators.minLength(3)]],
-       website: ['', [Validators.required, Validators.minLength(3)]],
-       email: ['', [Validators.required, Validators.minLength(3)]]
-    }) 
+  stopEdit() {
+    this.editar = false;
   }
 
+  createForm() {
+    this.userForm = this.formBuilder.group({
+      id: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      website: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.minLength(3)]],
+    });
+  }
 }

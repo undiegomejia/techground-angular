@@ -8,14 +8,12 @@ import { Post } from '../pages/posts/post.interface';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-
   public posts: Post[] = [];
 
   constructor(private PostService: PostService) {
     this.PostService.getPosts().subscribe(
       (res) => {
         this.posts = res;
-        console.log(this.posts);
       },
       (error) => {
         console.log('Error:', error);

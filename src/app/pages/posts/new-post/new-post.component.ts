@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AvatarGenerator } from 'random-avatar-generator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/pages/users/users.service';
+import { PostService } from 'src/app/pages/posts/posts.service';
 import { User } from '../../users/users.interface';
 import { Post } from '../post.interface';
 
@@ -11,8 +12,11 @@ import { Post } from '../post.interface';
   styleUrls: ['./new-post.component.scss'],
 })
 export class NewPostComponent implements OnInit {
-
-  constructor(private UserService: UserService, public formBuilder: FormBuilder) {}
+  constructor(
+    private UserService: UserService,
+    private PostService: PostService,
+    public formBuilder: FormBuilder
+  ) {}
 
   @Input('data') post: Post;
 
@@ -22,29 +26,34 @@ export class NewPostComponent implements OnInit {
 
   @Output() clickOutside = new EventEmitter<void>();
 
-  public title:string
-  public body:string
+  public title: string;
+  public body: string;
+  public id: number;
+  public userId: number;
   public generator = new AvatarGenerator();
   public avatarUrl: string = '';
-  public activeEdition = false
-  public postForm: FormGroup
-  public nuevoPost:Post
-  public users:User[]
+  public activeEdition = false;
+  public postForm: FormGroup;
+  public newPost: Post;
+  public posts: Post;
+  public users: User[];
 
   ngOnInit(): void {
-    this.createForm()
+    this.createForm();
     this.avatarUrl = this.generator.generateRandomAvatar('avatar');
   }
 
-  get getControl(){
+  get getControl() {
     return this.postForm.controls;
   }
 
-  createForm(){
+  createForm() {
     this.postForm = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       body: ['', [Validators.required, Validators.minLength(3)]],
-    }) 
+      id: ['', [Validators.required, Validators.minLength(2)]],
+      userId: ['', [Validators.required, Validators.minLength(2)]],
+    });
   }
 
   deletePost(id: number) {
@@ -52,20 +61,31 @@ export class NewPostComponent implements OnInit {
   }
 
   editPost() {
-    this.activeEdition = true
+    this.activeEdition = true;
   }
 
-  stopEdit(){
-    this.activeEdition = false
+  stopEdit() {
+    this.activeEdition = false;
   }
 
-  onSubmit(post:Post){
-    this.nuevoPost = this.postForm.value
-    this.nuevoPost.id = this.post.id
-    this.post = this.nuevoPost
-    this.activeEdition = false
-    this.edit.emit(this.nuevoPost)
-    console.log(this.nuevoPost)
+  onSubmit(post: Post) {
+    this.newPost = this.postForm.value;
+    this.newPost.id = this.post.id;
+    this.newPost.userId = this.post.userId;
+    this.post = this.newPost;
+    this.activeEdition = false;
+    this.edit.emit(this.newPost);
+    this.PostService.putPost(this.newPost).subscribe(
+      (res) => {
+        this.posts = res;
+        console.log('Put:', res);
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        console.log('Done');
+      }
+    );
   }
-  
 }

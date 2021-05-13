@@ -8,8 +8,9 @@ import { User } from '../users.interface';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
-
   public users: User[] = [];
+  public user: User;
+  PostService: any;
 
   constructor(private UserService: UserService) {}
 
@@ -17,13 +18,13 @@ export class UserListComponent implements OnInit {
     this.UserService.getUsers().subscribe(
       (res) => {
         this.users = res;
-        console.log('Res:', res);
+        console.log('Data:', res);
       },
       (error) => {
         console.log('Error:', error);
       },
       () => {
-        console.log('Done');
+        console.log('Users received');
       }
     );
   }
@@ -31,10 +32,34 @@ export class UserListComponent implements OnInit {
   borrarUser(id: number) {
     this.users = this.users.filter((user) => user.id != id);
     console.log(this.users);
+    this.UserService.deleteUser(id).subscribe(
+      (res) => {
+        this.user = res;
+        console.log('User deleted:', res);
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        return;
+      }
+    );
   }
 
   editarUsuario(user: User) {
     this.users.splice(user.id - 1, 1, user);
     console.log(this.users);
+    this.UserService.editUser(user).subscribe(
+      (res) => {
+        this.user = res;
+        console.log('User edited:', res);
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        return;
+      }
+    );
   }
 }

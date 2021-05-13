@@ -1,18 +1,17 @@
-
-    <div class="post col-md-12" >
-        <img class="post__banner" src="https://picsum.photos/920/300" alt="">
+<div class="post col-md-8 my-0 mx-auto">
+    <img class="post__banner" src="https://picsum.photos/920/300" alt="" />
     <div class="post__body">
-        <small>Post ID: {{postById?.id}}</small>
-        <hr>
-        <h1 class="post__body--title">{{postById?.title}}</h1>
-        <p class="post__body--text">{{postById?.body}}</p>
+        <small>Post ID: {{ postById?.id }}</small>
+        <hr />
+        <h1 class="post__body--title">{{ postById?.title }}</h1>
+        <p class="post__body--text">{{ postById?.body }}</p>
         <div class="post__user text-right">
-          <img class="post__user--avatar" src="{{ avatarUrl }}" alt="" />
-          <small>By: {{user?.name}}</small>
+            <img class="post__user--avatar" src="{{ avatarUrl }}" alt="" />
+            <small>By: {{ user?.name }}</small>
         </div>
-        <hr>
+        <hr />
         <h4 class="post__body--title">Comments:</h4>
-        
+
         <div class="post__body--comments">
             <ul *ngFor="let comment of comments">
                 <li>PostId: {{ comment.postId }}</li>
@@ -20,6 +19,7 @@
                 <li>Name: {{ comment.name }}</li>
                 <li>Email: {{ comment.email }}</li>
                 <li>Comment: {{ comment.body }}</li>
-              </ul>
+            </ul>
         </div>
     </div>
+</div>

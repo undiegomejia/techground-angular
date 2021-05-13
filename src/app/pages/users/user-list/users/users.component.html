@@ -2,53 +2,88 @@
     <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" class="user__list--card card">
         <div class="card-body">
             <p class="card-text">
-                <small >User ID: <span *ngIf="!editar; else inputUserId">{{ user?.id }}</span> 
-                <ng-template #inputUserId>
-                    {{ user?.id }}
-                </ng-template>
-            </small>
+                <small>User ID:
+          <span *ngIf="!editar; else inputUserId">{{ user?.id }}</span>
+          <ng-template #inputUserId>
+            {{ user?.id }}
+          </ng-template>
+        </small>
             </p>
             <hr />
-
-
 
             <div class="user__list--title">
                 <img class="user__info--avatar" src="{{ avatarUrl }}" alt="" />
                 <span>
-          <h4  class="user__list--name card-title">
-              <span *ngIf="!editar; else inputUserName">{{ user?.name }}</span>
-              <ng-template #inputUserName>
-                <input [(ngModel)]="name" type="text" formControlName="name" placeholder="{{ user?.name }}">
-            </ng-template>
-            </h4>
-          <p class="user__list--username card-text">
-            <small>Username: <span *ngIf="!editar; else inputUserUsername">{{ user?.username }}</span> 
-                <ng-template #inputUserUsername>
-                    <input [(ngModel)]="username" type="text" formControlName="username" placeholder="{{ user?.username }}">
-                </ng-template></small>
-          </p>
-          <p class="card-text">
-            <small>Email: <span *ngIf="!editar; else inputUserEmail">{{ user?.email }}</span>
-                <ng-template #inputUserEmail>
-                    <input [(ngModel)]="email" type="text" formControlName="email" placeholder="{{ user?.email }}">
-                </ng-template> </small>
-        </p>
-        <p class="card-text"><small> Website: <span *ngIf="!editar; else inputUserWebsite">{{ user?.website }}</span>
-            <ng-template #inputUserWebsite>
-                <input [(ngModel)]="website" type="text" formControlName="website" placeholder="{{ user?.website }}">
-            </ng-template> </small> </p>
-        </span>
+          <h4 class="user__list--name card-title">
+            <span *ngIf="!editar; else inputUserName">{{ user?.name }}</span>
+                <ng-template #inputUserName>
+                    <input [(ngModel)]="name" type="text" formControlName="name" placeholder="{{ user?.name }}" />
+                </ng-template>
+                </h4>
+                <p class="user__list--username card-text">
+                    <small>Username:
+              <span *ngIf="!editar; else inputUserUsername">{{
+                user?.username
+              }}</span>
+              <ng-template #inputUserUsername>
+                <input
+                  [(ngModel)]="username"
+                  type="text"
+                  formControlName="username"
+                  placeholder="{{ user?.username }}"
+                /> </ng-template
+            ></small>
+                </p>
+                <p class="card-text">
+                    <small>Email:
+              <span *ngIf="!editar; else inputUserEmail">{{
+                user?.email
+              }}</span>
+              <ng-template #inputUserEmail>
+                <input
+                  [(ngModel)]="email"
+                  type="text"
+                  formControlName="email"
+                  placeholder="{{ user?.email }}"
+                />
+              </ng-template>
+            </small>
+                </p>
+                <p class="card-text">
+                    <small>
+              Website:
+              <span *ngIf="!editar; else inputUserWebsite">{{
+                user?.website
+              }}</span>
+              <ng-template #inputUserWebsite>
+                <input
+                  [(ngModel)]="website"
+                  type="text"
+                  formControlName="website"
+                  placeholder="{{ user?.website }}"
+                />
+              </ng-template>
+            </small>
+                </p>
+                </span>
             </div>
             <div class="btn-group col-md-12">
-                <button *ngIf="!editar; else buttonSave" class="btn btn-info" (click)="editable()">Edit User</button>
+                <button *ngIf="!editar; else buttonSave" class="btn btn-info" (click)="editable()">
+          Edit User
+        </button>
                 <ng-template #buttonSave>
-                    <button [disabled]="!name || !username || !email || !website" type="submit" class="btn btn-success">Save User</button>
+                    <button [disabled]="!name || !username || !email || !website" type="submit" class="btn btn-success">
+            Save User
+          </button>
                 </ng-template>
-                <button class="btn btn-primary" routerLink="../post-by-user/{{ user?.id }}">View Posts</button>
-                <button class="btn btn-danger" (click)="borrarUsuario(user.id)">Delete User</button>
+                <button class="btn btn-primary" routerLink="../post-by-user/{{ user?.id }}">
+          View Posts
+        </button>
+                <button class="btn btn-danger" (click)="deleteUser(user.id)">
+          Delete User
+        </button>
             </div>
-           <a *ngIf="editar" class="stopedit" (click)="stopEdit()">Stop Editing</a>
-    </div>
-  </form>
+            <a *ngIf="editar" class="stopedit" (click)="stopEdit()">Stop Editing</a>
+        </div>
+    </form>
 </div>
-

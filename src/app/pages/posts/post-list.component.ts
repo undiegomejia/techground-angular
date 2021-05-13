@@ -11,7 +11,6 @@ import { Post } from './post.interface';
   styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-
   public userId: number;
   public id: number;
   public title: string;
@@ -19,6 +18,7 @@ export class PostListComponent implements OnInit {
   public postForm: FormGroup;
   public formActive = false;
   public posts: Post[] = [];
+  public post: Post;
   public message!: string;
   public users: User[] = [];
 
@@ -44,13 +44,13 @@ export class PostListComponent implements OnInit {
     this.PostService.getPosts().subscribe(
       (res) => {
         this.posts = res;
-        console.log(this.posts);
+        console.log('Data:', res);
       },
       (error) => {
         console.log('Error:', error);
       },
       () => {
-        return;
+        console.log('Posts received');
       }
     );
 
@@ -69,13 +69,38 @@ export class PostListComponent implements OnInit {
   onSubmit() {
     this.posts.unshift(this.postForm.value);
     this.formActive = !this.formActive;
+    this.post = this.postForm.value;
+    this.PostService.newPost(this.post).subscribe(
+      (res) => {
+        this.post = res;
+        console.log('New Post:', res);
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        return;
+      }
+    );
   }
 
   borrarPost(id: number) {
     this.posts = this.posts.filter((post) => post.id != id);
+    this.PostService.deletePost(id).subscribe(
+      (res) => {
+        this.post = res;
+        console.log('Post deleted:', res);
+      },
+      (error) => {
+        console.log('Error:', error);
+      },
+      () => {
+        return;
+      }
+    );
   }
 
-  editPost(post:Post){
+  editPost(post: Post) {
     this.posts.splice(post.id - 1, 1, post);
   }
 }

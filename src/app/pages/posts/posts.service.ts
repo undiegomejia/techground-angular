@@ -17,21 +17,21 @@ export class PostService {
     );
   }
 
-  public getPostById(id:string): Observable<any> {
+  public getPostById(id: string): Observable<any> {
     return this._http.get<Post[]>(
       `https://jsonplaceholder.typicode.com/posts/${id}`,
       { observe: 'body', responseType: 'json' }
     );
   }
 
-  public getPostByUser(id:string): Observable<any> {
+  public getPostByUser(id: string): Observable<any> {
     return this._http.get<Post[]>(
       `https://jsonplaceholder.typicode.com/users/${id}/posts`,
       { observe: 'body', responseType: 'json' }
     );
   }
 
-  public commentsByParams(id:string): Observable<any> {
+  public commentsByParams(id: string): Observable<any> {
     const params = new HttpParams().set('postId', id);
     return this._http.get<Comment[]>(
       'https://jsonplaceholder.typicode.com/comments',
@@ -60,9 +60,9 @@ export class PostService {
     );
   }
 
-  public deletePost(): Observable<any> {
+  public deletePost(id: number): Observable<any> {
     return this._http.delete<Post[]>(
-      'https://jsonplaceholder.typicode.com/posts/2'
+      `https://jsonplaceholder.typicode.com/posts/${id}`
     );
   }
 }

@@ -9,38 +9,58 @@
         <img class="blog-img" src="https://picsum.photos/420/300" alt="blog-img" />
     </div>
     <form class="postForm" [formGroup]="postForm" (ngSubmit)="onSubmit(postForm.value)" class="blog-content">
+        <input style="display: none" [(ngModel)]="id" type="text" formControlName="id" value="{{ post?.id }}" />
+        <input style="display: none" [(ngModel)]="userId" type="text" formControlName="userId" value="{{ post?.userId }}" />
         <h4 class="blog-title">
-            <a *ngIf="!activeEdition; else inputTitle" routerLink="../post-detail/{{ post.id }}">{{ post?.title }}</a>
-            <ng-template #inputTitle>
-                <input [(ngModel)]="title" type="text" formControlName="title" placeholder="{{ post?.title }}">
-            </ng-template>
-        </h4>
-        <p *ngIf="!activeEdition; else inputBody" class="blog-body" >
-        {{ post?.body }}
-           
-        </p>
-        <ng-template #inputBody>
-            <textarea [(ngModel)]="body" formControlName="body" class="form-control" name="body" id="" cols="30" rows="10" placeholder="{{ post?.body }}"></textarea>
-            <button type="submit" class="btn btn-success mt-2">
-                Save Post
-              </button>
-              <a *ngIf="activeEdition" class="stopedit" (click)="stopEdit()">Stop Editing</a>
-        </ng-template>
-    </form>
-        <div class="btn-group col-md-12 mt-5">
-            <button routerLink="../post-detail/{{ post.id }}" class="btn btn-info">
-        View Post
-      </button>
-      <button *ngIf="!activeEdition; else editDisabled"  (click)="editPost()" class="btn btn-success">
+            <a *ngIf="!activeEdition; else inputTitle" routerLink="../post-detail/{{ post.id }}">{{ post?.title }}</a
+      >
+      <ng-template #inputTitle>
+        <input
+          [(ngModel)]="title"
+          type="text"
+          formControlName="title"
+          placeholder="{{ post?.title }}"
+        />
+      </ng-template>
+    </h4>
+    <p *ngIf="!activeEdition; else inputBody" class="blog-body">
+      {{ post?.body }}
+    </p>
+    <ng-template #inputBody>
+      <textarea
+        [(ngModel)]="body"
+        formControlName="body"
+        class="form-control"
+        name="body"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="{{ post?.body }}"
+      ></textarea>
+      <button type="submit" class="btn btn-success mt-2">Save Post</button>
+      <a *ngIf="activeEdition" class="stopedit" (click)="stopEdit()"
+        >Stop Editing</a
+      >
+    </ng-template>
+  </form>
+  <div class="btn-group col-md-12 mt-5">
+    <button routerLink="../post-detail/{{ post.id }}" class="btn btn-info">
+      View Post
+    </button>
+    <button
+      *ngIf="!activeEdition; else editDisabled"
+      (click)="editPost()"
+      class="btn btn-success"
+    >
+      Edit Post
+    </button>
+    <ng-template #editDisabled>
+      <button [disabled]="activeEdition" class="btn btn-success">
         Edit Post
       </button>
-      <ng-template #editDisabled>
-        <button  [disabled]="activeEdition" class="btn btn-success">
-            Edit Post
-          </button>
-      </ng-template>
-            <button (click)="deletePost(post.id)" class="btn btn-danger">
-        Delete Post
-      </button>
-        </div>
+    </ng-template>
+    <button (click)="deletePost(post.id)" class="btn btn-danger">
+      Delete Post
+    </button>
+  </div>
 </div>
